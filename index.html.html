@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>1IN3</title>
+<meta name="description" content="For the 1 in 3 who don't make headlines. 1IN3 turns everyday South Africans into monthly activists — funding the frontline NPOs, delivering the products, forcing the attention.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="1IN3">
+<meta property="og:title" content="1IN3">
+<meta property="og:description" content="For the 1 in 3 who don't make headlines. 1IN3 turns everyday South Africans into monthly activists — funding the frontline NPOs, delivering the products, forcing the attention.">
+<meta property="og:image" content="https://1in3.co.za/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="1IN3 — a South African campaign for the 1 in 3 women the system keeps forgetting">
+<meta property="og:url" content="https://1in3.co.za">
+<meta property="og:locale" content="en_ZA">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="1IN3">
+<meta name="twitter:description" content="For the 1 in 3 who don't make headlines. Funding the frontline NPOs, delivering the products, forcing the attention.">
+<meta name="twitter:image" content="https://1in3.co.za/og.png">
+<meta name="twitter:image:alt" content="1IN3 — a South African campaign for the 1 in 3 women the system keeps forgetting">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  /* Layout: dark-only. Action sections (What we're building + Donate pads) are the main point —
+     given visual weight through surface panels, larger type, and placement near the top. */
+
+  :root {
+    --bg: #0E0608;
+    --surface: #19090D;
+    --surface-2: #220E13;
+    --surface-3: #2B1218;
+    --fg: #F2E8D5;
+    --fg-muted: #8A7872;
+    --fg-dim: #5C4C47;
+    --accent: #E63946;
+    --accent-dim: #A52834;
+    --accent-wash: rgba(230, 57, 70, 0.09);
+    --accent-wash-strong: rgba(230, 57, 70, 0.14);
+    --rule: #2A1317;
+    color-scheme: dark;
+
+    --f-display: 'Fraunces', 'Playfair Display', Georgia, serif;
+    --f-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --f-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--f-body);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+  [hidden] { display: none !important; }
+
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-inline: 24px;
+    padding-block: 24px 56px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Help strip — crisis info stays near the top */
+  .help-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    padding: 14px 20px;
+    background: var(--accent-wash);
+    border: 1px solid var(--accent);
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .help-strip-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .help-strip-nums {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    color: var(--fg);
+  }
+  .help-strip-nums strong {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .help-strip-nums span.sub {
+    color: var(--fg-muted);
+    font-size: 13px;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-block-end: 36px;
+    border-bottom: 1px solid var(--rule);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    font-family: var(--f-body);
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+    color: var(--fg);
+  }
+  .wordmark .dot { color: var(--accent); }
+  .status {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .status::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.85); }
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: 48px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (min-width: 820px) {
+    .hero {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      padding-block: 80px 64px;
+      gap: 48px;
+    }
+  }
+  .monument {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 144, 'SOFT' 20;
+    font-size: clamp(120px, 36vw, 260px);
+    line-height: 0.82;
+    letter-spacing: -0.05em;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: 0.02em;
+    min-width: 0;
+  }
+  .monument .in {
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 0.11em;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--fg-muted);
+    align-self: center;
+    padding-inline: 0.55em 0.4em;
+    position: relative;
+    top: -0.1em;
+  }
+  .headline {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 72, 'SOFT' 30;
+    font-size: clamp(28px, 4.4vw, 42px);
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .headline em {
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: 'opsz' 72, 'SOFT' 100, 'WONK' 1;
+  }
+  .headline-source {
+    margin-top: 18px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    line-height: 1.5;
+  }
+
+  /* Positioning */
+  .positioning {
+    padding-block: 36px 12px;
+    border-top: 1px solid var(--rule);
+  }
+  .positioning-copy {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.6vw, 28px);
+    line-height: 1.35;
+    text-wrap: balance;
+    letter-spacing: -0.005em;
+    font-weight: 400;
+    margin: 0;
+    max-width: 42ch;
+  }
+  .positioning-copy .accent { color: var(--accent); }
+
+  /* ======================
+     ACTION BLOCK — the main point
+     Wraps "What we're building" + "Donate pads today" in a visually heavier zone.
+     ====================== */
+  .action-zone {
+    margin-top: 48px;
+    padding: 48px 32px;
+    background: linear-gradient(180deg, var(--accent-wash) 0%, var(--accent-wash-strong) 100%);
+    border: 1px solid var(--accent-dim);
+    border-radius: 2px;
+    position: relative;
+  }
+  @media (max-width: 600px) {
+    .action-zone {
+      padding: 36px 20px;
+    }
+  }
+
+  .action-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .action-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .action-title {
+    font-family: var(--f-display);
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    margin: 0 0 36px;
+    text-wrap: balance;
+    max-width: 20ch;
+  }
+
+  /* Pillars — bigger cards with surface backgrounds */
+  .pillars {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 56px;
+  }
+  @media (min-width: 760px) {
+    .pillars {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+  .pillar-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .pillar-card:hover {
+    border-color: var(--accent);
+  }
+  .pillar-num {
+    font-family: var(--f-mono);
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .pillar-card h3 {
+    font-family: var(--f-body);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.015em;
+    color: var(--fg);
+    line-height: 1.25;
+  }
+  .pillar-card p {
+    color: var(--fg-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Divider between the two action sections */
+  .action-divider {
+    height: 1px;
+    background: var(--accent-dim);
+    opacity: 0.5;
+    margin-bottom: 56px;
+  }
+
+  /* Donate pads intro */
+  .donate-intro {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--fg);
+    margin: 0 0 28px;
+    max-width: 60ch;
+  }
+
+  /* Donate channel cards */
+  .channels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .channel {
+    display: block;
+    padding: 26px 24px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .channel:hover,
+  .channel:focus-visible {
+    border-color: var(--accent);
+    background: var(--surface);
+    outline: none;
+  }
+  .channel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .channel-name {
+    font-family: var(--f-body);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.015em;
+    color: var(--fg);
+  }
+  .channel-type {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .channel-desc {
+    color: var(--fg-muted);
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+  .channel-url {
+    font-family: var(--f-mono);
+    font-size: 13px;
+    color: var(--fg);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .channel-url::after {
+    content: '→';
+    color: var(--accent);
+    transition: transform 0.15s ease;
+  }
+  .channel:hover .channel-url::after {
+    transform: translateX(3px);
+  }
+
+  .channel-disclaimer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--fg-dim);
+    line-height: 1.55;
+    max-width: 60ch;
+  }
+
+  /* ======================
+     SECONDARY SECTIONS — reference material
+     ====================== */
+  .row {
+    padding-block: 48px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 760px) {
+    .row {
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 48px;
+      padding-block: 56px;
+    }
+  }
+  .row:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    line-height: 1.4;
+  }
+
+  /* Stats */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 560px) {
+    .stat-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 2px solid var(--accent);
+  }
+  .stat-num {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 144, 'SOFT' 20;
+    font-size: clamp(52px, 7vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--fg);
+  }
+  .stat-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--fg);
+    max-width: 36ch;
+  }
+  .stat-source {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .scale-note {
+    margin-top: 32px;
+    padding: 18px 22px;
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--fg);
+    max-width: 64ch;
+  }
+  .scale-note strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* About GBV */
+  .about-copy {
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 62ch;
+    color: var(--fg);
+  }
+  .about-copy p { margin: 0 0 16px; }
+  .about-copy p:last-child { margin: 0; }
+  .about-copy strong { font-weight: 500; }
+
+  .forms-list {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  @media (min-width: 520px) {
+    .forms-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .form-item {
+    background: var(--bg);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-item-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--fg);
+    letter-spacing: -0.005em;
+  }
+  .form-item-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--fg-muted);
+  }
+
+  .signs-block {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .signs-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+  .signs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    gap: 14px;
+    max-width: 62ch;
+  }
+  .signs-list li {
+    padding-left: 24px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--fg);
+  }
+  .signs-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 14px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .signs-list li strong {
+    font-weight: 600;
+    color: var(--fg);
+  }
+  .signs-note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--fg);
+    padding: 16px 20px;
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  /* Helpline block */
+  .helpline-group-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 14px;
+  }
+  .emergency-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  @media (min-width: 560px) {
+    .emergency-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .emergency-item {
+    background: var(--bg);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .emergency-num {
+    font-family: var(--f-display);
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .emergency-name {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .helplines {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  @media (min-width: 560px) {
+    .helplines {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .helpline {
+    background: var(--bg);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .helpline-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: -0.005em;
+  }
+  .helpline-num {
+    font-family: var(--f-mono);
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .helpline-ref {
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+  .helpline-meta {
+    font-size: 13px;
+    color: var(--fg-muted);
+    line-height: 1.45;
+  }
+
+  /* Launch date box */
+  .launch {
+    margin-top: 24px;
+    padding: 18px 22px;
+    border: 1px solid var(--accent);
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 100%;
+  }
+  .launch-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .launch-value {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  .honest-copy {
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 58ch;
+    margin: 0;
+  }
+  .honest-copy strong { color: var(--fg); font-weight: 500; }
+
+  /* Contact */
+  .contact-body { font-size: 16px; line-height: 1.6; }
+  .contact-body p { margin: 0 0 16px; }
+  .email-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    font-family: var(--f-mono);
+    font-size: 14px;
+    color: var(--fg);
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+    max-width: 100%;
+  }
+  .email-box:hover,
+  .email-box:focus-visible {
+    border-color: var(--accent);
+    outline: none;
+  }
+  .email-box .copy-tag {
+    color: var(--fg-muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .email-box.copied .copy-tag { color: var(--accent); }
+
+  /* Footer */
+  footer {
+    margin-top: auto;
+    padding-block-start: 40px;
+    padding-block-end: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    align-items: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="help-strip" role="complementary" aria-label="Crisis helpline">
+    <span class="help-strip-label">In crisis?</span>
+    <div class="help-strip-nums">
+      <span><strong>GBV Command Centre:</strong> 0800 428 428 <span class="sub">· 24-hour · free from any phone</span></span>
+      <span><strong>SAPS Emergency:</strong> 10111</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="wordmark">1IN3<span class="dot">.</span></div>
+    <div class="status" aria-label="Project status">In early development</div>
+  </header>
+
+  <section class="hero">
+    <div class="monument" aria-hidden="true">
+      <span>1</span>
+      <span class="in">in</span>
+      <span>3</span>
+    </div>
+    <div>
+      <h1 class="headline">South African women have experienced physical <em>violence</em> in their lifetime.</h1>
+      <div class="headline-source">Source — HSRC First South African National GBV Study · Survey 2022, published 2024 · 7.3 million women</div>
+    </div>
+  </section>
+
+  <section class="positioning">
+    <p class="positioning-copy">For the <span class="accent">1 in 3</span> who don't make headlines. 1IN3 turns everyday South Africans into monthly activists. Funding the frontline NPOs. Delivering the products. Forcing the attention.</p>
+  </section>
+
+  <!-- ====== THE ACTION ZONE — this is the point of the page ====== -->
+  <section class="action-zone" aria-labelledby="action-building-title">
+    <div class="action-label">What we do</div>
+    <h2 class="action-title" id="action-building-title">Three things, every month.</h2>
+
+    <div class="pillars">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <h3>Direct funding to frontline NPOs</h3>
+        <p>We don't collect donations in our name. Money flows straight to the partner NPO's existing portal. Every rand lands where it's needed, and the receiving organisation issues the tax certificate.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <h3>Sanitary product drive</h3>
+        <p>Running in parallel with the funding campaign. For the women and girls who miss school, work, and dignity because they can't afford pads.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <h3>Forcing attention</h3>
+        <p>The statistic doesn't move until the public can't look away. Social, press, community activation. Our job is amplification.</p>
+      </div>
+    </div>
+
+    <div class="action-divider"></div>
+
+    <div class="action-label">Donate pads today</div>
+    <h2 class="action-title">Keep a girl in school this month.</h2>
+
+    <p class="donate-intro">1IN3's own sanitary product drive launches with 16 Days of Activism. Until then, these established South African programmes already accept pad and cash donations. Every pack keeps a girl in school.</p>
+
+    <div class="channels">
+      <a class="channel" href="https://www.dischem.co.za/million-comforts" target="_blank" rel="noopener noreferrer">
+        <div class="channel-head">
+          <div class="channel-name">Dis-Chem Million Comforts</div>
+          <div class="channel-type">In-store · Online</div>
+        </div>
+        <p class="channel-desc">The Dis-Chem Foundation runs two annual pad collection drives — March and July — at every Dis-Chem and Dis-Chem Baby City store. Participating brands match packs donated. Online donations open year-round.</p>
+        <div class="channel-url">dischem.co.za/million-comforts</div>
+      </a>
+      <a class="channel" href="https://menstruation.foundation/donate/" target="_blank" rel="noopener noreferrer">
+        <div class="channel-head">
+          <div class="channel-name">MENstruation Foundation</div>
+          <div class="channel-type">Online · Cash</div>
+        </div>
+        <p class="channel-desc">The largest non-profit distributor of free sanitary pads in Africa. Operates a dedicated pad factory producing the Agojie pad and installs free dispensers in girls' school bathrooms. Co-founded by Siv Ngesi.</p>
+        <div class="channel-url">menstruation.foundation/donate</div>
+      </a>
+      <a class="channel" href="https://www.subzpads.co.za/donate-now/" target="_blank" rel="noopener noreferrer">
+        <div class="channel-head">
+          <div class="channel-name">Project Dignity — Subz Pads</div>
+          <div class="channel-type">Online · Cash</div>
+        </div>
+        <p class="channel-desc">Funds reusable, washable Subz pad packs for girls aged ten to nineteen. One pack lasts up to five years — a single donation covers menstrual dignity through most of a girl's school career.</p>
+        <div class="channel-url">subzpads.co.za/donate-now</div>
+      </a>
+    </div>
+    <p class="channel-disclaimer">1IN3 is not formally affiliated with these organisations. They are listed here because they are established, verifiable South African programmes already doing the work. We will add our own partner-NPO channel at launch.</p>
+  </section>
+  <!-- ====== /ACTION ZONE ====== -->
+
+  <section class="row">
+    <div class="label">The<br>scale</div>
+    <div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">3 / day</div>
+          <div class="stat-desc">South African women are killed by an intimate partner, every day.</div>
+          <div class="stat-source">South African Medical Research Council · 2024</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">75,944</div>
+          <div class="stat-desc">Domestic violence crimes reported against women in a nine-month period.</div>
+          <div class="stat-source">SAPS · April — December 2024</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">9,201</div>
+          <div class="stat-desc">Rapes reported in a single three-month period. Roughly one hundred a day.</div>
+          <div class="stat-source">SAPS · April — June 2026</div>
+        </div>
+      </div>
+      <div class="scale-note">
+        <strong>November 2025 — </strong>Gender-based violence and femicide were formally classified as a <strong>National Disaster</strong> in South Africa following a civil-society petition exceeding one million signatures.
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="label">What<br>GBV is</div>
+    <div class="about-copy">
+      <p>Gender-based violence is any act of harm directed at a person because of their gender. It is not only physical. It includes sexual, emotional, economic, and digital abuse. It happens at home, at work, at school, on the street, and online.</p>
+      <p>In South Africa, it is overwhelmingly directed at women and girls, and the perpetrators are overwhelmingly male intimate partners. Many incidents are never reported — distrust of police, fear of retaliation, financial dependence, and shame all keep the real number out of the statistics above.</p>
+      <div class="forms-list">
+        <div class="form-item">
+          <div class="form-item-name">Physical violence</div>
+          <div class="form-item-desc">Hitting, choking, use of weapons, physical restraint.</div>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">Sexual violence</div>
+          <div class="form-item-desc">Rape, sexual coercion, assault, unwanted contact.</div>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">Emotional abuse</div>
+          <div class="form-item-desc">Threats, humiliation, isolation, controlling behaviour.</div>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">Economic abuse</div>
+          <div class="form-item-desc">Withholding money, sabotaging work, controlling access to resources.</div>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">Digital abuse</div>
+          <div class="form-item-desc">Stalking, non-consensual sharing of images, surveillance via phone or apps.</div>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">Femicide</div>
+          <div class="form-item-desc">The killing of a woman because of her gender. The most severe end of the same continuum.</div>
+        </div>
+      </div>
+
+      <div class="signs-block">
+        <div class="signs-label">Signs someone may be experiencing abuse</div>
+        <ul class="signs-list">
+          <li><strong>Unexplained injuries</strong> — bruises, cuts, or marks that don't match the story given, or that are hidden under clothing or makeup.</li>
+          <li><strong>Fear or flinching</strong> around a partner, parent, or family member. Extreme caution about doing anything that might set them off.</li>
+          <li><strong>Isolation</strong> — withdrawal from friends and family, restricted phone or social access, movements tracked or questioned.</li>
+          <li><strong>Financial control</strong> — a partner holding all the money, limiting access to it, demanding an account of every rand spent.</li>
+          <li><strong>Explaining or defending</strong> their behaviour — frequently making excuses for a partner's temper, controlling actions, or physical outbursts.</li>
+          <li><strong>Sudden changes</strong> — depression, anxiety, trouble sleeping, substance use, or withdrawal from things they used to enjoy.</li>
+        </ul>
+        <p class="signs-note">If any of this feels familiar — for yourself, a friend, a family member, or a colleague — the helplines on this page are a free, confidential first step. You don't have to be certain to call.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="label">Need help<br>right now</div>
+    <div>
+      <p class="about-copy" style="margin-bottom: 24px;">Every number below is free, confidential, and answered 24 hours a day. If you can't speak, dial and leave the line open — operators are trained to respond to silent calls.</p>
+
+      <div class="helpline-group-label">Emergency — any crime in progress</div>
+      <div class="emergency-row">
+        <div class="emergency-item">
+          <div class="emergency-num">112</div>
+          <div class="emergency-name">All emergencies</div>
+        </div>
+        <div class="emergency-item">
+          <div class="emergency-num">10111</div>
+          <div class="emergency-name">SAPS</div>
+        </div>
+        <div class="emergency-item">
+          <div class="emergency-num">10177</div>
+          <div class="emergency-name">Ambulance &amp; Fire</div>
+        </div>
+      </div>
+
+      <div class="helpline-group-label" style="margin-top: 32px;">GBV-specific support</div>
+      <div class="helplines">
+        <div class="helpline">
+          <div class="helpline-name">GBV Command Centre</div>
+          <div class="helpline-num">0800 428 428</div>
+          <div class="helpline-meta">Department of Social Development · Also *120*7867# USSD · A social worker follows up</div>
+        </div>
+        <div class="helpline">
+          <div class="helpline-name">Stop Gender Violence Helpline</div>
+          <div class="helpline-num">0800 150 150</div>
+          <div class="helpline-meta">Physical, emotional, sexual or financial abuse · WhatsApp available on the same number</div>
+        </div>
+        <div class="helpline">
+          <div class="helpline-name">TEARS Foundation</div>
+          <div class="helpline-num">*134*7355#</div>
+          <div class="helpline-meta">USSD · Request a call back from a trauma counsellor · No airtime needed on any phone</div>
+        </div>
+        <div class="helpline">
+          <div class="helpline-name">National Shelter Movement</div>
+          <div class="helpline-num">0800 001 005</div>
+          <div class="helpline-meta">If you need somewhere safe to go tonight · Please Call Me: 082 057 8600</div>
+        </div>
+        <div class="helpline">
+          <div class="helpline-name">Childline South Africa</div>
+          <div class="helpline-num">116</div>
+          <div class="helpline-meta">For anyone under 18 · Or an adult worried about a child</div>
+        </div>
+        <div class="helpline">
+          <div class="helpline-name">Thuthuzela Care Centres</div>
+          <div class="helpline-ref">Any hospital or SAPS station</div>
+          <div class="helpline-meta">After a sexual assault · One-stop medical, forensic, counselling and SAPS reporting · 60+ centres nationwide</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="label">Where<br>we are</div>
+    <div>
+      <p class="honest-copy">1IN3 is in early development. We're in partnership conversations with established South African GBV organisations, with the first campaign timed to <strong>16 Days of Activism Against Gender-Based Violence</strong>. If you're an NPO, a volunteer, or someone who wants to contribute, reach out.</p>
+      <div class="launch">
+        <div class="launch-label">First activation</div>
+        <div class="launch-value">25 November — 10 December 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="label">Contact</div>
+    <div class="contact-body">
+      <p>Partnerships, questions, or help:</p>
+      <button class="email-box" id="email-copy" type="button" aria-label="Copy email address">
+        <span class="email-addr">hello@1in3.co.za</span>
+        <span class="copy-tag">Copy</span>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <div>1IN3 · South Africa · 2026</div>
+  </footer>
+</div>
+
+<script>
+  // Email copy with graceful fallback
+  (function () {
+    var box = document.getElementById('email-copy');
+    if (!box) return;
+    var email = 'hello@1in3.co.za';
+    var tag = box.querySelector('.copy-tag');
+    var original = tag.textContent;
+    var resetTimer;
+
+    function flash(text, cls) {
+      clearTimeout(resetTimer);
+      tag.textContent = text;
+      if (cls) box.classList.add(cls);
+      resetTimer = setTimeout(function () {
+        tag.textContent = original;
+        box.classList.remove('copied');
+      }, 1800);
+    }
+
+    box.addEventListener('click', function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(
+          function () { flash('Copied', 'copied'); },
+          function () { selectText(); }
+        );
+      } else {
+        selectText();
+      }
+    });
+
+    function selectText() {
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(box.querySelector('.email-addr'));
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        flash('Select & copy', 'copied');
+      } catch (e) {
+        flash('Email: ' + email);
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
